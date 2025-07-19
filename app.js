@@ -62,12 +62,16 @@ app.put("/listings/:id", async (req, res) => {
 
 //create route
 
-app.post("/listings",async (req,res)=>{
+app.post("/listings",async (req,res,next)=>{
   // let {title,description ,image,price,country,location }=req.body ... it is also valid
 
- const newListing = new Listing(req.body.listing);
+try{
+   const newListing = new Listing(req.body.listing);
  await newListing.save();
  res.redirect("/listings");
+} catch(err){
+  next(err);
+}
 
 });
 
@@ -102,6 +106,10 @@ app.get("/listings",async (req,res)=>{
 // console.log("sample was saved");
 // res.send("succesfull");
 // });
+
+app.use((err,req,res,next)=>{
+   res.send("something went wrong");
+});
 
 app.listen(8080,()=>{
   console.log("server is running on port 8080");
