@@ -1,7 +1,7 @@
 
 ---
 
-### ✅ 2. **Rental App – README.md**
+### ✅ **Rental App – README.md**
 
 ```markdown
 # 🏠 Rental Platform (Airbnb Clone)
